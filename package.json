@@ -1,6 +1,6 @@
 {
   "name": "geojson-shortest-pathfinder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "shortest pathfinder from geojson data",
   "main": "index.js",
   "scripts": {

@@ -125,13 +125,8 @@ module.exports = {
                 temp[1] = path[i].split("_")[1];
                 path_coordinates.push(temp);
             }
-            for(var i=0;i<path_coordinates.length;i++){
-                for(var j=0;j<path_coordinates[i].length;j++){
-                    process.stdout.write(path_coordinates[i][j]+"\n");
-                }
-            }
             
-            // return path_coordinates;
+            return path_coordinates;
         }else{
             throw Error("no features available to create graph")
             return;
