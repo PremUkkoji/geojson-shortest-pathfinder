@@ -125,7 +125,8 @@ geojson = {
     ]
 }
 
-start = [74.7509765625, 19.08288436934017];
-end = [80.37597656249999, 22.6038688428957];
+start = [74.75097656, 19.082884369340];
+end = [80.375976562499, 22.60386884289];
 
-package.pathFinder(geojson, start, end);
+var path = package.pathFinder(geojson, start, end);
+process.stdout.write(JSON.stringify(path) + "\n");

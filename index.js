@@ -96,7 +96,6 @@ function dijkstras(start, end){
 
 function shortestPath(start, end){
     var begin = String(start.x) + "_" + String(start.y);
-    // var destination = String(end.x) + "_" + String(end.y);
     var path = [];
     var curr = String(end.x) + "_" + String(end.y);
 
@@ -108,10 +107,25 @@ function shortestPath(start, end){
     return path;
 }
 
+function findNearestNode(loc){
+    var smalldist = inf;
+    var nearestnode;
+    var tempdist;
+    for(var i=0;i<nodes.length;i++){
+        tempdist = distance(loc, nodes[i]);
+        if(smalldist > tempdist){
+            smalldist = tempdist;
+            nearestnode = nodes[i];
+        }
+    }
+    return nearestnode;
+}
+
 module.exports = {
   pathFinder: (geojson, start, end) => {
     start = new Point(start[0], start[1]);
     end = new Point(end[0], end[1]);
+
     if(geojson["type"] == "FeatureCollection"){
         var features = geojson["features"];
 
@@ -134,6 +148,10 @@ module.exports = {
                     lastnode = node;
                 }
             }
+
+            start = findNearestNode(start);
+            end = findNearestNode(end);
+
             dijkstras(start, end);
             var path = shortestPath(start, end);
             path = path.reverse();
